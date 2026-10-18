@@ -2,7 +2,7 @@
 name: tkt-context
 description: "Fetch and read an issue-tracker ticket (e.g. RND-123): fields, comments, attachments. Read-only. Use to discuss or summarize a ticket, or as step 1 of autonomous-squad."
 argument-hint: "<tkt key>"
-disable-model-invocation: true
+disable-model-invocation: false
 ---
 Ticket: $ARGUMENTS
 

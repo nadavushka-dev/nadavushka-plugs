@@ -2,7 +2,7 @@
 name: tkt-ship
 description: "Ship a worked issue-tracker ticket (e.g. RND-123): PR → CI → independent review → evidence on the tkt → merge → cleanup, moving statuses. Use standalone or as step 5 of autonomous-squad."
 argument-hint: "<tkt key> [--hitl] [extra instructions]"
-disable-model-invocation: true
+disable-model-invocation: false
 ---
 User input: $ARGUMENTS
 - `--hitl` (human in the loop) → wait for human approval before merging. Default: fully autonomous.

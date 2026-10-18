@@ -2,7 +2,7 @@
 name: tkt-evidence
 description: "Prove a change with red → green evidence (screenshots, curl, failing-then-passing test, DB query, consumer outcome). Use standalone, as step 4 of autonomous-squad, or as QA verifying someone else's work."
 argument-hint: "[tkt key] [extra instructions]"
-disable-model-invocation: true
+disable-model-invocation: false
 ---
 User input: $ARGUMENTS
 
