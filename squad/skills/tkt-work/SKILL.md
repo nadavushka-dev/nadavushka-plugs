@@ -2,6 +2,7 @@
 name: tkt-work
 description: "Work an issue-tracker ticket (e.g. RND-123): bug → reproduce red, then minimal fix; feature → implement per PRD. Use standalone or as step 3 of autonomous-squad."
 argument-hint: "<tkt key> [extra instructions]"
+disable-model-invocation: true
 ---
 User input: $ARGUMENTS
 
