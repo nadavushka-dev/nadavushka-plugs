@@ -1,0 +1,14 @@
+{
+  "name": "nadavushka-plugs",
+  "owner": {
+    "name": "nadav"
+  },
+  "description": "Nadav's personal Claude Code plugins.",
+  "plugins": [
+    {
+      "name": "squad",
+      "source": "./squad",
+      "description": "Work issue-tracker tickets end to end: context, work, evidence, ship."
+    }
+  ]
+}

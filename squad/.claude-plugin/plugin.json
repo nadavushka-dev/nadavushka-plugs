@@ -1,0 +1,6 @@
+{
+  "name": "squad",
+  "description": "Work issue-tracker tickets end to end: context, work, evidence, ship.",
+  "version": "1.0.0",
+  "author": { "name": "nadav" }
+}
