@@ -24,3 +24,11 @@ No red artifact in any medium → `qa clar`.
 # Feature?
 - The PRD must be followed
 - Ambiguous, contradicts or conflicts with existing features → flag it in a comment, move to `prod clar`
+
+# Adversarial review (before green / `squad:tkt-evidence`)
+Spawn a **fresh** subagent (not a fork). Give it: tkt key, diff, red artifact (bug) or PRD (feature).
+Its job is to break the change, not approve it. Each finding is labeled **blocking** or **nit**.
+- Bug: does the red reproduce *the reported* bug? Root cause or symptom? Minimal? Regressions nearby?
+- Feature: every PRD point covered and tested? Anything beyond the PRD? Conflicts with existing behavior?
+Blocking → fix → re-review. Dismiss a blocking finding only with evidence, not argument.
+Still blocking after 2 rounds → `dev clar` with the open question. Nits → fix or list in the PR.
