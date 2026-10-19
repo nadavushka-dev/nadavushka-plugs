@@ -29,3 +29,19 @@ Shared by autonomous-squad, tkt-context, tkt-work, tkt-evidence, tkt-ship. Edit 
 | `Waiting for Deployment to QA Environment` | `WFT-QA` | merged — after human approval if `--hitl` |
 
 Every move to a clarification status comes with a tkt comment stating the exact question.
+
+## Projects Table
+| Name | Tkt Indicator |
+| ---- | ------------- |
+| Piqk | Piqk |
+| Rebuild/Distruptor | rebuild |
+
+Tkt Indicator -> `Project Name`
+
+## Machines Table
+| Name | Project |
+| ---- | ------- |
+| Local | MacOs, Physical machine, For local stuff, not to be used for any of the projects |
+| UbCl | Ubuntu, Server, Piqk |
+| UbMc | Ubuntu, Server, Piqk + Distruptor |
+| Ub3 | Ubuntu, Server, Distruptor |
