@@ -16,6 +16,7 @@ If the `/herdr` skill is available, run it. You are the orchestrator/delegator/s
 You may choose how many sessions are in the squad. The minimum is 2 workers:
 - Implementor — steps 3–4
 - QA/Code Reviewer — the reviewer in step 5. Rejected → back to the Implementor.
+- Must open squad members on the same herdr space you are in.
 
 No herdr → you are the Implementor, and QA/Code Reviewer is a fresh subagent.
 
