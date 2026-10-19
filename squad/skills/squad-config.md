@@ -1,5 +1,5 @@
 # Squad Config
-Shared by autonomous-squad, tkt-context, tkt-work, tkt-evidence, tkt-ship. Edit per team — the skills refer to these values, rules and status names.
+Shared by autonomous-squad, tkt-context, tkt-work, tkt-evidence, tkt-ship, tkt-squad-loop. Edit per team — the skills refer to these values, rules and status names.
 
 ## Rules
 - We work in evidence-driven development. **Never skip evidence.**
@@ -31,10 +31,10 @@ Shared by autonomous-squad, tkt-context, tkt-work, tkt-evidence, tkt-ship. Edit 
 Every move to a clarification status comes with a tkt comment stating the exact question.
 
 ## Projects Table
-| Name | Tkt Indicator |
-| ---- | ------------- |
-| Piqk | Piqk |
-| Rebuild/Distruptor | rebuild |
+| Name | Tkt Indicator | Calude Alias Command |
+| ---- | ------------- | -------------------- |
+| Piqk | Piqk | cldp |
+| Rebuild/Distruptor | rebuild | cldd |
 
 Tkt Indicator -> `Project Name`
 
