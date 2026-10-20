@@ -47,6 +47,7 @@ For every open ledger row, fetch the ticket status and check the squad's space:
 | space is gone or its session has exited | close the row: `crashed`; leave a comment on the ticket saying the squad died and at which status |
 | open longer than 4h with no status change since dispatch | report it as `stale`; don't kill it. Open longer than 8h → close the space, close the row: `timeout`, comment on the ticket |
 | `--hitl` and waiting for human approval | keep it; it still holds a seat; list it in the report |
+| squad seem to froze and not doing any work when the work is identified as not done | nudge the squad orchestrator to check his squad since something went wrong |
 
 Update `last status` / `last checked` on rows that stay open.
 
