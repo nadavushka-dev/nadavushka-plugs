@@ -44,7 +44,6 @@ For every open ledger row, fetch the ticket status and check the squad's space:
 |---|---|
 | status `WFT-QA` (the last status) | close the space, close the row: `done` |
 | status is a clarification (`dev clar`, `qa clar`, `prod clar`) | close the space, close the row: `clarification` — the ticket goes back to humans; it's re-grabbable later only if it returns to `todo`/`reopen` |
-| status went back to `To Do` / `Reopen` (squad gave up or was reset) | close the space, close the row: `returned` |
 | space is gone or its session has exited | close the row: `crashed`; leave a comment on the ticket saying the squad died and at which status |
 | open longer than 4h with no status change since dispatch | report it as `stale`; don't kill it. Open longer than 8h → close the space, close the row: `timeout`, comment on the ticket |
 | `--hitl` and waiting for human approval | keep it; it still holds a seat; list it in the report |
