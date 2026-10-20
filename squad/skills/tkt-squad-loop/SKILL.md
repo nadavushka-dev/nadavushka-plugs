@@ -53,7 +53,7 @@ Update `last status` / `last checked` on rows that stay open.
 
 ## STEP 2 Guardrails
 On every machine that has an open squad, check free memory and the 1-minute load average.
-- **Choking** = free memory < 15% of total, or load > 1.5 × CPU cores.
+- **Choking** = free RAM < 15% of total, or load > 1.5 × CPU cores. Do not look at Diskspace.
 - Any machine choking → lower effective seats by 1 (minimum 1) and don't dispatch to that machine this cycle.
 - Free memory < 5% on a machine → also close the newest squad on it (row: `oom-guard`, comment on the ticket).
 - 3 cycles in a row with no machine choking → raise effective seats by 1, up to `seats`.

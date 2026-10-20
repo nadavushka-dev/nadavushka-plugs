@@ -14,7 +14,8 @@ User input: $ARGUMENTS
 - If one evidence type isn't available, switch to another.
 - Verifying someone else's work (QA)? Re-run the red → green yourself — never trust their artifacts.
 
-The evidence must be posted in the tkt comments with the title: "EOP" stands for Evidence Of Proof.
+# HARD RULES
+- The evidence must be posted in the tkt comments with the title: "EOP" stands for Evidence Of Proof. 
 
 ## Evidence Types
 | tkt class | red → green proof |
