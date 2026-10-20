@@ -31,10 +31,10 @@ Shared by autonomous-squad, tkt-context, tkt-work, tkt-evidence, tkt-ship, tkt-s
 Every move to a clarification status comes with a tkt comment stating the exact question.
 
 ## Projects Table
-| Name | Tkt Indicator | Calude Alias Command |
-| ---- | ------------- | -------------------- |
-| Piqk | Piqk | cldp |
-| Rebuild/Distruptor | rebuild | cldd |
+| Name | Project field value | Tkt Indicator (fallback) | Calude Alias Command |
+| ---- | ------------------- | ------------------------ | -------------------- |
+| Piqk | PiQK | Piqk | cldp |
+| Rebuild/Distruptor | Rebuild | rebuild | cldd |
 
 Tkt Indicator -> `Project Name`
 
