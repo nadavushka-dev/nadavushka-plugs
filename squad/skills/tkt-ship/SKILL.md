@@ -16,6 +16,7 @@ User input: $ARGUMENTS
 # Ship
 - Open PR → CI must pass (fails → fix, repeat)
 - Review: a fresh reviewer (the squad's QA/Code Reviewer, or a fresh subagent) re-runs the evidence with `squad:tkt-evidence` and reviews the diff. Rejected → fix, repeat
+- Qa: adverserial qa, make sure that the [feature is working]/[the bug is fixed], no regressions introduced. Rejected → fix, repeat
 - Post evidence (before and after) + PR link on the tkt + log time of 1h → `cr`
 - `--hitl`? → wait for human approval
 - Squash merge to the **default branch** → `WFT-QA`

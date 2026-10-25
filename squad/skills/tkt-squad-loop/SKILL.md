@@ -19,7 +19,6 @@ This skill dispatches squads to remote machines, so it needs the `/herdr` skill.
 # Role
 You are the supervisor. You never implement, review or touch code. You only fetch, dispatch, sweep and report.
 Stopping and releasing squad dev stacks (config → Dev Stacks) is part of the sweep — it is ops, not code.
-
 # Definitions
 - **Seat** = one dispatched squad (one ticket), however many sessions that squad spawns.
 - **Effective seats** = `seats` minus any reduction from Guardrails. Never above `seats`.
