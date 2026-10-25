@@ -1,6 +1,6 @@
 ---
 name: tkt-ship
-description: "Ship a worked issue-tracker ticket (e.g. RND-123): PR → CI → independent review → evidence on the tkt → merge → cleanup, moving statuses. Use standalone or as step 5 of autonomous-squad."
+description: "Ship a worked issue-tracker ticket (e.g. RND-123): PR → CI → code review → adversarial QA → evidence on the tkt → merge → cleanup, moving statuses. Use standalone or as step 5 of autonomous-squad."
 argument-hint: "<tkt key> [--hitl] [extra instructions]"
 disable-model-invocation: false
 ---
@@ -15,8 +15,9 @@ User input: $ARGUMENTS
 
 # Ship
 - Open PR → CI must pass (fails → fix, repeat)
-- Review: a fresh reviewer (the squad's QA/Code Reviewer, or a fresh subagent) re-runs the evidence with `squad:tkt-evidence` and reviews the diff. Rejected → fix, repeat
-- Qa: adverserial qa, make sure that the [feature is working]/[the bug is fixed], no regressions introduced. Rejected → fix, repeat
+- Code review: the squad's Code Reviewer (or a fresh subagent) reviews the diff — correctness, scope, tests, readability. Rejected → fix, repeat
+- QA: the squad's QA (or another fresh subagent — never the reviewer) is adversarial. Re-runs red → green with `squad:tkt-evidence` — never trusts the Implementor's artifacts — then tries to break it: edge cases, bad input, adjacent flows, regressions. Feature → it works; bug → it's fixed. Rejected → fix
+- Any fix after code review changes the diff → back through code review, then QA. Both must pass on the same final commit
 - Post evidence (before and after) + PR link on the tkt + log time of 1h → `cr`
 - `--hitl`? → wait for human approval
 - Squash merge to the **default branch** → `WFT-QA`

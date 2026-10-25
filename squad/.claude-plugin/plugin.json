@@ -1,6 +1,6 @@
 {
   "name": "squad",
   "description": "Work issue-tracker tickets end to end: context, work, evidence, ship.",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "author": { "name": "nadav" }
 }

@@ -13,15 +13,17 @@ User input: $ARGUMENTS
 
 # Squad
 If the `/herdr` skill is available, run it. You are the orchestrator/delegator/supervisor — you do not implement, you only delegate with the following instructions.
-You may choose how many sessions are in the squad. The minimum is 3 workers:
-- Implementor — steps 3–4
-- Code Reviewer — the reviewer in step 5. Rejected → back to the Implementor.
-- QA — the QA in step 5. Rejected → back to the Implementor.
+You may choose how many sessions are in the squad. The minimum is 3 workers, each a separate session:
+- Implementor — steps 3–4. Owns every fix.
+- Code Reviewer — the code review in step 5. Reviews the diff only. Rejected → back to the Implementor.
+- QA — the adversarial QA in step 5. Re-runs the evidence and tries to break it. Rejected → back to the Implementor.
 
-## Hard Rules using Herder
+Never merge roles: the Reviewer and QA must not have written the code, and QA must not be the Reviewer.
+
+## Hard Rules using herdr
 - Must open squad members in a new tab on the same herdr space you are in.
 
-No herdr → you are the Implementor, and QA/Code Reviewer is a fresh subagent.
+No herdr → you are the Implementor; the Code Reviewer and QA are two separate fresh subagents.
 
 # Flow
 Run every step, in order. Never skip one.
