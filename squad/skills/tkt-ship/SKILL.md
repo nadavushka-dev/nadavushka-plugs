@@ -19,4 +19,5 @@ User input: $ARGUMENTS
 - Post evidence (before and after) + PR link on the tkt + log time of 1h → `cr`
 - `--hitl`? → wait for human approval
 - Squash merge to the **default branch** → `WFT-QA`
-- Clean up: kill this run's processes, remove the worktree
+- Clean up: kill this run's processes, then run the project's `Stack release` (config → Dev Stacks) — it removes the stack, its data and the worktree. Never a bare `git worktree remove`.
+- Verify released (config → Dev Stacks). Containers left → you are not done: report the leftover project in the tkt comment and to the orchestrator

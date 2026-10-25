@@ -18,6 +18,7 @@ This skill dispatches squads to remote machines, so it needs the `/herdr` skill.
 
 # Role
 You are the supervisor. You never implement, review or touch code. You only fetch, dispatch, sweep and report.
+Stopping and releasing squad dev stacks (config → Dev Stacks) is part of the sweep — it is ops, not code.
 
 # Definitions
 - **Seat** = one dispatched squad (one ticket), however many sessions that squad spawns.
@@ -51,12 +52,26 @@ For every open ledger row, fetch the ticket status and check the squad's space:
 
 Update `last status` / `last checked` on rows that stay open.
 
+**Stack action for every row you close** — on the row's machine, for the tkt's stacks (config → Dev Stacks, `Stack name pattern` with this tkt's key):
+| close reason | stack action |
+|---|---|
+| `done`, `clarification` | the squad should have released it. Still there → `Stack release`, then verify released |
+| `crashed`, `timeout`, `oom-guard` | `Stack stop` only — the squad may have unpushed work in the worktree, so never release it; list it in the report as `stopped, needs release` |
+
+Write the action into the closed row's reason (e.g. `done · stack released`).
+
 ## STEP 2 Guardrails
 On every machine that has an open squad, check free memory and the 1-minute load average.
 - **Choking** = free RAM < 15% of total, or load > 1.5 × CPU cores. Do not look at Diskspace.
 - Any machine choking → lower effective seats by 1 (minimum 1) and don't dispatch to that machine this cycle.
 - Free memory < 5% on a machine → also close the newest squad on it (row: `oom-guard`, comment on the ticket).
 - 3 cycles in a row with no machine choking → raise effective seats by 1, up to `seats`.
+
+**Orphan stacks** — on **every** machine in the Machines Table except `Local` (not only the ones with an open squad):
+- List running compose projects: `docker ps --format '{{.Label "com.docker.compose.project"}}' | sort -u`.
+- A project that matches a `Stack name pattern` but whose tkt key has **no open ledger row** is an orphan → `Stack stop` it and report it (`orphan stack stopped: <project> on <machine>`).
+- Stop only. Never `down -v`, `rm` or remove a worktree for an orphan — deleting its data is a human call; list stopped orphans in the report until a human releases them.
+- Never touch a project that matches no pattern.
 
 ## STEP 3 Fetch
 Free seats = effective seats − open ledger rows. 0 → skip to STEP 5.
@@ -84,6 +99,7 @@ Print one short block per cycle:
 - skipped: tkt → `unroutable` / `no machine` / no seats
 - stale / waiting-for-hitl squads
 - guardrail actions taken
+- stack actions: released / stopped / orphans stopped (with machine)
 
 use a table format of
 | Action | Reason |

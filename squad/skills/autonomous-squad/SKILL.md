@@ -42,3 +42,11 @@ Invoke the `squad:tkt-evidence` skill with the ticket key as args.
 
 ## STEP 5 Ship
 Invoke the `squad:tkt-ship` skill with the ticket key (+ `--hitl` if given) as args.
+
+# Exit rule
+Applies to **every** way the run ends, not only STEP 5. Run it before you close your sessions.
+- Shipped → `squad:tkt-ship` already released the stack. Verify it (config → Dev Stacks).
+- Any other exit (clarification status, stopped, gave up, blocked) → release too:
+  1. Commit any uncommitted work as `wip: <key> <what's in it>` and push the branch — releasing deletes the worktree, so unpushed work is lost.
+  2. Run the project's `Stack release`, then verify released.
+  3. Name the pushed branch in the tkt comment, so a `reopen` resumes from it.

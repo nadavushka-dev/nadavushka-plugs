@@ -7,6 +7,8 @@ Shared by autonomous-squad, tkt-context, tkt-work, tkt-evidence, tkt-ship, tkt-s
 - No regressions — run the existing tests.
 - We work on multiple tkts at once, so we use git worktrees:
   branch `<fix|feat>/<key>-<n>-<slug>` (lowercase project key, keep the hyphen) under `.worktrees/<key>-<n>-<slug>`.
+- A squad owns every dev stack it starts. A tkt that leaves the squad — shipped, clarification, stopped, gave up — leaves **no running containers** behind.
+  Never `git worktree remove` on its own: it deletes the stack's config and orphans the running stack. Always use the project's `Stack release` (see Dev Stacks).
 
 ## Values
 | key | value |
@@ -37,6 +39,17 @@ Every move to a clarification status comes with a tkt comment stating the exact 
 | Rebuild/Distruptor | Rebuild | rebuild | cldd |
 
 Tkt Indicator -> `Project Name`
+
+## Dev Stacks
+Per-tkt compose stacks a squad brings up in its worktree. `<project>` = the compose project name; `<key>` = lowercase tkt key (e.g. `rnd-123`).
+
+| Project | Stack name pattern | Stack release (stack + data + worktree) | Stack stop (keep data) |
+| ------- | ------------------ | --------------------------------------- | ---------------------- |
+| Rebuild/Distruptor | `disruptor-feat-<key>-*`, `disruptor-fix-<key>-*` | from the main checkout: `./.claude/skills/dev-env/cleanup-worktree.sh <worktree path> --delete-branch` | `docker compose -p <project> --profile "*" stop` |
+| Piqk | `piqk-feat-<key>-*`, `piqk-fix-<key>-*` | `docker compose -p <project> down -v --remove-orphans`, then `git worktree remove <worktree path>` | `docker compose -p <project> stop` |
+
+- Only these patterns are squad stacks. Anything else (`disruptor-dev`, the always-on `piqk-*` infra: redis, kafka, mongo, infisical, mailhog…) is **never** stopped or removed by a squad or the loop.
+- Released = `docker ps -a --filter label=com.docker.compose.project=<project>` prints nothing. Check it; don't assume.
 
 ## Machines Table
 | Name | Project |
