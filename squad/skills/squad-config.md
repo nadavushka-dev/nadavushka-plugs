@@ -28,9 +28,12 @@ Shared by autonomous-squad, tkt-context, tkt-work, tkt-evidence, tkt-ship, tkt-s
 | `QA Clarification` | `qa clar` | bug ambiguous or not reproducing |
 | `Product Clarification` | `prod clar` | feature ambiguous, contradicting or conflicting |
 | `Code Review` | `cr` | evidence posted + PR opened |
-| `Waiting for Deployment to QA Environment` | `WFT-QA` | merged — after human approval if `--hitl` |
+| `Main Gate` | `main-gate` | Rebuild only: landed on a green branch, on its way to `main`. Set by the train conductor when green lands; a squad never sets it |
+| `Waiting for Deployment to QA Environment` | `WFT-QA` | merged — after human approval if `--hitl`. Rebuild: never set by us; the devInt → main cycle moves Main Gate → WFT-QA once ALL the tkt's commits are in `main` |
 
 Every move to a clarification status comes with a tkt comment stating the exact question.
+
+Rebuild/Distruptor: a squad's tkt parks in `Code Review`. Every commit for a tkt carries its key in the message (`RND-1234: ...`), fix-ups and cherry-picks included; the devInt → main cycle finds tkts only by that key.
 
 ## Projects Table
 | Name | Project field value | Tkt Indicator (fallback) | Calude Alias Command |
